@@ -1,4 +1,4 @@
-name: exemplo_widget
+name: exercicios_widgets
 description: "A new Flutter project."
 publish_to: 'none'
 version: 0.1.0
@@ -18,4 +18,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/kobe.png
+    - assets/kobe_bryant.png
+    - assets/lebron_james.png
+    - assets/kevin_durant.png
+    - assets/luka_doncic.png
+    - assets/michael_jordan.png
+    - assets/campo_futebol.png
