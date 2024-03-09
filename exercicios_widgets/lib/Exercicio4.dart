@@ -19,8 +19,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final List<Jogador> melhoresJogadores = [
-    Jogador('Lev Yashin', 'Goleiro', 'https://example.com/player1.jpg',
+  final List<Jogador> timeEsquerda = [
+    Jogador('Manuel Neuer', 'Goleiro', 'https://example.com/player1.jpg',
         position: Offset(150, 100)),
     Jogador('Cafu', 'Lateral-direito', 'https://example.com/player2.jpg',
         position: Offset(250, 150)),
@@ -44,99 +44,146 @@ class _MyAppState extends State<MyApp> {
         position: Offset(150, 400)),
   ];
 
-  List<Jogador> reservas = [
-    Jogador('Neymar', 'Atacante', 'https://example.com/player12.jpg',
-        position: Offset(10, 10)),
-    Jogador('Kylian Mbappé', 'Atacante', 'https://example.com/player13.jpg',
-        position: Offset(10, 10)),
-    Jogador('Virgil van Dijk', 'Zagueiro', 'https://example.com/player14.jpg',
-        position: Offset(10, 10)),
-    Jogador('Kevin De Bruyne', 'Meio-campista', 'https://example.com/player15.jpg',
-        position: Offset(10, 10)),
-    Jogador('Robert Lewandowski', 'Atacante', 'https://example.com/player16.jpg',
-        position: Offset(10, 10)),
-    Jogador('Sergio Ramos', 'Zagueiro', 'https://example.com/player17.jpg',
-        position: Offset(10, 10)),
-    Jogador('Luka Modric', 'Meio-campista', 'https://example.com/player18.jpg',
-        position: Offset(10, 10)),
-    Jogador('Thiago Silva', 'Zagueiro', 'https://example.com/player19.jpg',
-        position: Offset(10, 10)),
-    Jogador('Mohamed Salah', 'Atacante', 'https://example.com/player20.jpg',
-        position: Offset(10, 10)),
-    Jogador('Sadio Mané', 'Atacante', 'https://example.com/player21.jpg',
-        position: Offset(10, 10)),
-    Jogador('N Golo Kanté', 'Meio-campista', 'https://example.com/player22.jpg',
-        position: Offset(10, 10)),
+  final List<Jogador> timeDireita = [
+    Jogador('Gianluigi Buffon', 'Goleiro', 'https://example.com/player12.jpg',
+        position: Offset(600, 100)),
+    Jogador('Dani Alves', 'Lateral-direito', 'https://example.com/player13.jpg',
+        position: Offset(500, 150)),
+    Jogador('Fabio Cannavaro', 'Zagueiro', 'https://example.com/player14.jpg',
+        position: Offset(600, 200)),
+    Jogador('Sergio Ramos', 'Zagueiro', 'https://example.com/player15.jpg',
+        position: Offset(500, 200)),
+    Jogador('Marcelo', 'Lateral-esquerdo', 'https://example.com/player16.jpg',
+        position: Offset(600, 250)),
+    Jogador('Andrea Pirlo', 'Meio-campista', 'https://example.com/player17.jpg',
+        position: Offset(500, 250)),
+    Jogador('Xavi', 'Meio-campista', 'https://example.com/player18.jpg',
+        position: Offset(600, 300)),
+    Jogador('Luka Modric', 'Meio-campista', 'https://example.com/player19.jpg',
+        position: Offset(500, 300)),
+    Jogador('Marco Van Basten', 'Atacante', 'https://example.com/player20.jpg',
+        position: Offset(600, 350)),
+    Jogador('Ronaldo', 'Atacante', 'https://example.com/player21.jpg',
+        position: Offset(500, 350)),
+    Jogador('Ronaldinho', 'Atacante', 'https://example.com/player22.jpg',
+        position: Offset(600, 400)),
   ];
+
+  Jogador? jogadorSelecionado;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Posicione os jogadores no campo'),
-        ),
-        body: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/campo_futebol.png'),
-                  fit: BoxFit.cover,
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Futebol'),
+            bottom: TabBar(
+              tabs: [
+                Tab(text: 'Monte seu time'),
+                Tab(text: 'História'),
+                Tab(text: 'Regras'),
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              Stack(
+                children: [
+                  Image.asset(
+              'assets/campo_futebol.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
+            ),
+            for (var jogador in timeEsquerda)
+              Positioned(
+                left: jogador.position.dx,
+                top: jogador.position.dy,
+                child: GestureDetector(
+                  onPanUpdate: (details) {
+                    setState(() {
+                      jogador.position += details.delta;
+                    });
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(jogador.urlImagem),
+                        radius: 20,
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        jogador.nome,
+                        style: TextStyle(color: Color.fromARGB(255, 155, 217, 9)),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              height: 300,
-              width: double.infinity,
-              child: Stack(
-                children: [
-                  for (var jogador in melhoresJogadores)
-                    Positioned(
-                      left: jogador.position.dx,
-                      top: jogador.position.dy,
-                      child: Draggable<Jogador>(
-                        data: jogador,
-                        child: CircleAvatar(
-                          backgroundImage: NetworkImage(jogador.urlImagem),
+            for (var jogador in timeDireita)
+              Positioned(
+                left: jogador.position.dx,
+                top: jogador.position.dy,
+                child: GestureDetector(//para detectar o gesto de arrastar e mover os jogadores.
+                //Para cada jogador, você criou um widget GestureDetector 
+                  onPanUpdate: (details) {//você atualiza a posição do jogador  (jogador.position)
+                   // adicionando a diferença entre a posição anterior e a nova posição do gesto (details.delta)
+                    setState(() {// Ao chamar setState dentro do onPanUpdate, você informa ao Flutter que o estado do widget
+                    // mudou e que ele deve reconstruir a interface para refletir essa mudança.
+                      jogador.position += details.delta;
+                    });
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(jogador.urlImagem),
+                        radius: 20,
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        jogador.nome,
+                          style: TextStyle(color: Color.fromARGB(255, 165, 235, 3)),
+                            ),
+                          ],
                         ),
-                        feedback: CircleAvatar(
-                          backgroundImage: NetworkImage(jogador.urlImagem),
-                          radius: 20,
-                        ),
-                        childWhenDragging: Container(),
-                        onDragEnd: (details) {
-                          setState(() {
-                            jogador.position = details.offset;
-                          });
-                        },
                       ),
                     ),
                 ],
               ),
-            ),
-            Container(
-              height: 100,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: reservas.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Draggable<Jogador>(
-                      data: reservas[index],
-                      child: CircleAvatar(
-                        backgroundImage: NetworkImage(reservas[index].urlImagem),
-                      ),
-                      feedback: CircleAvatar(
-                        backgroundImage: NetworkImage(reservas[index].urlImagem),
-                        radius: 20,
-                      ),
-                      childWhenDragging: Container(),
-                    ),
-                  );
-                },
+             Center(
+  child: Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: Text(
+      'O futebol é um dos esportes mais populares do mundo, com uma história rica e diversificada. '
+      'Originado na Inglaterra, o esporte se espalhou rapidamente por todo o mundo, tornando-se uma paixão global. '
+      'Com regras simples e a capacidade de unir pessoas de diferentes culturas e origens, o futebol transcende barreiras e é um símbolo de união e competição saudável.',
+      style: TextStyle(fontSize: 18),
+    ),
+  ),
+),
+
+              ListView(
+                children: [
+                  ListTile(
+                    title: Text('Regra 1: O objetivo do jogo'),
+                    subtitle: Text('O objetivo do futebol é marcar mais gols do que o adversário.'),
+                  ),
+                  ListTile(
+                    title: Text('Regra 2: Duração da partida'),
+                    subtitle: Text('Um jogo de futebol é dividido em dois tempos de 45 minutos cada, com um intervalo de 15 minutos.'),
+                  ),
+                  ListTile(
+                    title: Text('Regra 3: Número de jogadores'),
+                    subtitle: Text('Cada time de futebol é composto por 11 jogadores, incluindo um goleiro.'),
+                  ),
+                ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
