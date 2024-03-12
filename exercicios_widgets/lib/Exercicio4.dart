@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
         position: Offset(500, 200)),
     Jogador('Marcelo', 'Lateral-esquerdo', 'https://example.com/player16.jpg',
         position: Offset(600, 250)),
-    Jogador('Andrea Pirlo', 'Meio-campista', 'https://example.com/player17.jpg',
+    Jogador('Michel Platini', 'Meio-campista', 'https://example.com/player17.jpg',
         position: Offset(500, 250)),
     Jogador('Xavi', 'Meio-campista', 'https://example.com/player18.jpg',
         position: Offset(600, 300)),
