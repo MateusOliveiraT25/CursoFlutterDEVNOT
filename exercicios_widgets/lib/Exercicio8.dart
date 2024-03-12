@@ -24,18 +24,18 @@ class ProductListPage extends StatelessWidget {
         children: <Widget>[
           ProductCard(
             image: 'https://via.placeholder.com/150',
-            title: 'Produto 1',
-            description: 'Descrição do Produto 1',
+            title: 'Tênis Nike Air Max',
+            description: 'Tênis esportivo de alta performance.',
           ),
           ProductCard(
             image: 'https://via.placeholder.com/150',
-            title: 'Produto 2',
-            description: 'Descrição do Produto 2',
+            title: 'Tênis Adidas Ultraboost',
+            description: 'Tênis de corrida com tecnologia Boost.',
           ),
           ProductCard(
             image: 'https://via.placeholder.com/150',
-            title: 'Produto 3',
-            description: 'Descrição do Produto 3',
+            title: 'Tênis Asics Gel Nimbus',
+            description: 'Tênis confortável para corridas longas.',
           ),
           // Adicione mais ProductCards conforme necessário
         ],
@@ -71,3 +71,4 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
+
