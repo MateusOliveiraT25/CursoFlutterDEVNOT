@@ -26,9 +26,9 @@ class ResponsiveLayout extends StatelessWidget {
 
     // Exemplo de layout responsivo
     if (screenSize.width > 600) {
-      return WideLayout();
+      return WideLayout(); // Exibe o layout amplo para telas largas
     } else {
-      return NarrowLayout();
+      return NarrowLayout(); // Exibe o layout estreito para telas estreitas
     }
   }
 }
@@ -40,7 +40,7 @@ class WideLayout extends StatelessWidget {
       child: Container(
         width: 300,
         height: 300,
-        color: Colors.blue,
+        color: Colors.green, // Cor verde para o layout amplo
         child: Text(
           'Wide Layout',
           style: TextStyle(fontSize: 24),
@@ -57,7 +57,7 @@ class NarrowLayout extends StatelessWidget {
       child: Container(
         width: 200,
         height: 200,
-        color: Colors.green,
+        color: Colors.yellow, // Cor amarela para o layout estreito
         child: Text(
           'Narrow Layout',
           style: TextStyle(fontSize: 18),
