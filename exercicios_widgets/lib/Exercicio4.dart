@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
         position: Offset(150, 100)),
     Jogador('Cafu', 'Lateral-direito', 'https://imgs.search.brave.com/b46sLCugmiviWAHfEUqTBqwmcvgU6cntXRWdg_6CCtE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNjYy/NTcxODQwL3Bob3Rv/L21hcmNvcy1jYWZ1/LWFjLW1pbGFuLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz04/NlY3amVIRmhza1Bj/ejlWc3dDYXZ0b3du/d0xNbXRseXM2QWh1/emVrcFlZPQ',
         position: Offset(250, 150)),
-    Jogador('Franz Beckenbauer', 'Zagueiro', 'https://imgs.search.brave.com/sx2ms7Sgf5xn56eicbe7iGQJs8RMjqCUZyPde-Qt0xg/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/YXdvcmxkb2Zzb2Nj/ZXIuY29tL2ltYWdl/cy90b3BfcGxheWVy/cy9iL2ZyYW56X2Jl/Y2tlbmJhdWVyLmpw/Zw',
+    Jogador('Franz Beckenbauer', 'Zagueiro', 'https://imgs.search.brave.com/V6rPSDUJM_6jaxr9jcuN6J-jmujCbhr1ZRjFT64B4yA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNTE1/MTEyMDQ4L3B0L2Zv/dG8vZnJhbnotYmVj/a2VuYmF1ZXItbWVt/YmVyLW9mLXRoZS13/ZXN0LWdlcm1hbi1z/b2NjZXItdGVhbS13/aG8tbGF0ZXItc2ln/bmVkLWEtY29udHJh/Y3Qtd2l0aC10aGUu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PW1PallMeXE1Nzk2/Mk4xZklWOGNkemdo/RWlsNzVNZ1hRazda/a0o5cEFScUE9',
         position: Offset(150, 200)),
     Jogador('Paolo Maldini', 'Zagueiro', 'https://imgs.search.brave.com/6Z0l4fhgzXXAsK8aAl3-NJnqAoe-2FuIYN0ZCWTXwNU/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzZmL2Yw/LzM0LzZmZjAzNDAw/ODZmNmJhNWMyNjFk/ZDAxNjRkMGYzOGEx/LmpwZw',
         position: Offset(250, 200)),
@@ -91,12 +91,13 @@ class _MyAppState extends State<MyApp> {
             children: [
               Stack(
                 children: [
-                  Image.asset(
-              'assets/campo_futebol.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-            ),
+                 Image.asset(
+  'assets/campo_futebol.png',
+  fit: BoxFit.contain,
+  width: double.infinity,
+  height: double.infinity,
+),
+
             for (var jogador in timeEsquerda)
               Positioned(
                 left: jogador.position.dx,
@@ -117,7 +118,7 @@ class _MyAppState extends State<MyApp> {
                       SizedBox(height: 4),
                       Text(
                         jogador.nome,
-                       style: TextStyle(color: Color.fromARGB(255, 165, 235, 3)),
+                       style: TextStyle(color: Color.fromARGB(255, 171, 255, 111)),
                             ),
                     ],
                   ),
@@ -146,7 +147,7 @@ class _MyAppState extends State<MyApp> {
                       SizedBox(height: 4),
                       Text(
                         jogador.nome,
-                          style: TextStyle(color: Color.fromARGB(255, 165, 235, 3)),
+                           style: TextStyle(color: Color.fromARGB(255, 171, 255, 111)),
                             ),
                           ],
                         ),
