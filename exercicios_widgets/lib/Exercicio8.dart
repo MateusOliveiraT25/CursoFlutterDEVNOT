@@ -23,17 +23,17 @@ class ProductListPage extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ProductCard(
-            image: 'https://via.placeholder.com/150',
+            image: 'https://imgs.search.brave.com/pBjz-jzZFv--VAn2jryFkRRDuwogYA6QtLXOhYgJvsI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWdu/aWtlLWEuYWthbWFp/aGQubmV0LzE5MjB4/MTkyMC8wMTEyMjRJ/TUEyLmpwZw',
             title: 'Tênis Nike Air Max',
             description: 'Tênis esportivo de alta performance.',
           ),
           ProductCard(
-            image: 'https://via.placeholder.com/150',
+            image: 'https://imgs.search.brave.com/mtnv_fV7xXsY21PKqMv4CQ7ZAAzTUWh41Eay2zIyUA4/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMubmV0c2hvZXMu/Y29tLmJyL3Byb2R1/dG9zL3RlbmlzLWFk/aWRhcy11bHRyYWJv/b3N0LWxpZ2h0LTIz/LzkzL0ZCOC00Mzcz/LTc5My9GQjgtNDM3/My03OTNfem9vbTEu/anBnP3RzPTE3MDA1/NzY0MzIm',
             title: 'Tênis Adidas Ultraboost',
             description: 'Tênis de corrida com tecnologia Boost.',
           ),
           ProductCard(
-            image: 'https://via.placeholder.com/150',
+            image: 'https://imgs.search.brave.com/x15nkhPxvO05jg-sLO6UaBfVw1DSf5BGURN6QfF1Jd0/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWdj/ZW50YXVyby1hLmFr/YW1haWhkLm5ldC8x/MzY2eDEzNjYvOTY2/MTExMlZBMS5qcGc',
             title: 'Tênis Asics Gel Nimbus',
             description: 'Tênis confortável para corridas longas.',
           ),
