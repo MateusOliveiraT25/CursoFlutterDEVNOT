@@ -61,7 +61,13 @@ class ProductCard extends StatelessWidget {
     return Card(
       child: Column(
         children: <Widget>[
-          Image.network(image),
+          Container(
+            height: 200, // Defina a altura desejada aqui
+            child: Image.network(
+              image,
+              fit: BoxFit.cover, // Ajuste a imagem para preencher o contêiner
+            ),
+          ),
           ListTile(
             title: Text(title),
             subtitle: Text(description),
@@ -71,4 +77,3 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
-

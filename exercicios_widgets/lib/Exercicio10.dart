@@ -48,7 +48,7 @@ class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample> {
             curve: Curves.easeInOut, // Curva de animação
             child: Center(
               child: Text(
-                'Clique para animar',
+                'Toque aqui',
                 style: TextStyle(color: Colors.white),
               ),
             ),
