@@ -4,16 +4,17 @@ void main() {
   runApp(MyApp());
 }
 
+// Definição da classe Jogador
 class Jogador {
   final String nome;
   final String posicao;
   final String urlImagem;
-  Offset position;
+  Offset position; // Posição do jogador no campo
 
   Jogador(this.nome, this.posicao, this.urlImagem, {required this.position});
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatefulWidget {// Classe principal do aplicativo
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -98,7 +99,7 @@ class _MyAppState extends State<MyApp> {
   height: double.infinity,
 ),
 
-            for (var jogador in timeEsquerda)
+            for (var jogador in timeEsquerda) // Posiciona os jogadores da esquerda
               Positioned(
                 left: jogador.position.dx,
                 top: jogador.position.dy,
@@ -124,7 +125,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
               ),
-            for (var jogador in timeDireita)
+            for (var jogador in timeDireita) // Posiciona os jogadores da direita
               Positioned(
                 left: jogador.position.dx,
                 top: jogador.position.dy,
