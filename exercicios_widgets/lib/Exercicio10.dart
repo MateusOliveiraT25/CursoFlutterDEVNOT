@@ -19,8 +19,10 @@ class AnimatedWidgetExample extends StatefulWidget {
 }
 
 class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample> {
+  // Variável para controlar se a animação está ativa ou não
   bool _isAnimated = false;
 
+  // Método para alternar o estado da animação
   void _toggleAnimation() {
     setState(() {
       _isAnimated = !_isAnimated;
@@ -34,14 +36,16 @@ class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample> {
         title: Text('Animação de Widget'),
       ),
       body: Center(
+        // GestureDetector para detectar toques e chamar o método _toggleAnimation
         child: GestureDetector(
           onTap: _toggleAnimation,
           child: AnimatedContainer(
+            // Propriedades do container que serão animadas
             width: _isAnimated ? 200 : 100,
             height: _isAnimated ? 200 : 100,
             color: _isAnimated ? Colors.blue : Colors.red,
-            duration: Duration(seconds: 1),
-            curve: Curves.easeInOut,
+            duration: Duration(seconds: 1), // Duração da animação
+            curve: Curves.easeInOut, // Curva de animação
             child: Center(
               child: Text(
                 'Clique para animar',
