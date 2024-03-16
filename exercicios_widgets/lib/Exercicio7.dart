@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -13,13 +15,29 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  // Lista de notícias sobre o Oscar
-  final List<News> newsList = [
-    News('Oscar 2024: Lista completa dos vencedores', 'Confira todos os vencedores da noite mais importante do cinema.'),
-    News('Melhores looks do tapete vermelho do Oscar 2024', 'Veja os looks mais marcantes das celebridades no tapete vermelho do Oscar.'),
-    News('Surpresas e polêmicas do Oscar 2024', 'Confira as surpresas e polêmicas que marcaram a cerimônia do Oscar deste ano.'),
-  ];
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final AudioPlayer audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playAudio(); // Chame o método _playAudio aqui
+  }
+
+void _playAudio() async {
+  try {
+    await audioPlayer.play('assets/audio.mp3', isLocal: true);
+  } catch (e) {
+    print('Erro ao reproduzir áudio: $e');
+  }
+}
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +71,11 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => NewsPage(newsList: newsList)),
+                  MaterialPageRoute(builder: (context) => NewsPage(newsList: [
+                    News('Oscar 2024: Lista completa dos vencedores', 'Confira todos os vencedores da noite mais importante do cinema.'),
+                    News('Melhores looks do tapete vermelho do Oscar 2024', 'Veja os looks mais marcantes das celebridades no tapete vermelho do Oscar.'),
+                    News('Surpresas e polêmicas do Oscar 2024', 'Confira as surpresas e polêmicas que marcaram a cerimônia do Oscar deste ano.'),
+                  ])),
                 );
               },
             ),
@@ -74,45 +96,10 @@ class HomePage extends StatelessWidget {
         // Imagem de fundo para a tela inicial
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage('https://imgs.search.brave.com/v17b1YDCVHo-LcpvaOY3kmSzjsbpPnQPW7fyl2V-Ei0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTAz/MjgwODYwL3B0L2Zv/dG8vYyVDMyVBOXUu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PU9WWlgyX0lMbnhB/c21kSXJjeUQ0Snha/aDFmZ05haENTd3Y3/UWNqOG0zUjQ9'),
+            image: NetworkImage('https://imgs.search.brave.com/gVh9Tzw8zD8KP5nnG_6H8wiIHSV-SbAYJExdgOY9X60/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzljLzM4/L2ExLzljMzhhMWNh/NzFhNjhmNDVlYjBm/MjJkYzA4ZTg1ZTBh/LmpwZw'),
             fit: BoxFit.cover,
           ),
         ),
-       
-      ),
-    );
-  }
-}
-
-// Página para exibir as notícias sobre o Oscar
-class NewsPage extends StatelessWidget {
-  final List<News> newsList;
-
-  NewsPage({required this.newsList});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Notícias sobre o Oscar'),
-      ),
-      body: ListView.builder(
-        itemCount: newsList.length,
-        itemBuilder: (context, index) {
-          var news = newsList[index];
-          return ListTile(
-            title: Text(news.title),
-            subtitle: Text(news.description),
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(news.title),
-                  duration: Duration(seconds: 2),
-                ),
-              );
-            },
-          );
-        },
       ),
     );
   }
@@ -137,6 +124,40 @@ class MusicNewsPage extends StatelessWidget {
         itemCount: musicNewsList.length,
         itemBuilder: (context, index) {
           var news = musicNewsList[index];
+          return ListTile(
+            title: Text(news.title),
+            subtitle: Text(news.description),
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(news.title),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+
+// Página para exibir as notícias sobre o Oscar
+class NewsPage extends StatelessWidget {
+  final List<News> newsList;
+
+  NewsPage({required this.newsList});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Notícias sobre o Oscar'),
+      ),
+      body: ListView.builder(
+        itemCount: newsList.length,
+        itemBuilder: (context, index) {
+          var news = newsList[index];
           return ListTile(
             title: Text(news.title),
             subtitle: Text(news.description),

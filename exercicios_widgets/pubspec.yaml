@@ -9,10 +9,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  audioplayers: ^0.20.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+   
   flutter_lints: ^3.0.0
 
 flutter:
@@ -24,3 +26,4 @@ flutter:
     - assets/luka_doncic.png
     - assets/michael_jordan.png
     - assets/campo_futebol.png
+    - assets/audio.mp3
