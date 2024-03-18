@@ -60,7 +60,7 @@ class TabBarPage extends StatelessWidget {
         width: 30, // largura da imagem
         height: 50, // altura da imagem
         child: Image.network(
-          filmesComedia[index].imagem,
+          filmesComedia[index].imagem,//pagina comedia
           fit: BoxFit.cover, // opção de ajuste da imagem
         ),
       ),
@@ -76,7 +76,7 @@ class TabBarPage extends StatelessWidget {
         width: 30, // largura da imagem
         height: 50, // altura da imagem
         child: Image.network(
-          filmesAcao[index].imagem,
+          filmesAcao[index].imagem,//açao
           fit: BoxFit.cover, // opção de ajuste da imagem
         ),
       ),
@@ -85,7 +85,7 @@ class TabBarPage extends StatelessWidget {
               },
             ),
             ListView.builder(
-              itemCount: filmesDrama.length,
+              itemCount: filmesDrama.length,//pagina drama
               itemBuilder: (context, index) {
                 return ListTile(
                  leading: Container(
