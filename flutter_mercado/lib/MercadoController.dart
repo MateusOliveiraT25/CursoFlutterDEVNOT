@@ -10,7 +10,7 @@ class ListaCompraController extends ChangeNotifier {
   List<ListaCompra> get lista => _lista;
 
   // Método para adicionar um item à lista de compras
-  void adicionarListaCompra(String descricao, Categoria categoria) {
+  void adicionarListaCompra(String descricao, Categoria categoria) { // verifica se há algum item na lista que tenha a mesma descrição e categoria
     if (descricao.isNotEmpty) {
       bool jaExiste = _lista.any((item) =>
           item.descricao.toLowerCase() == descricao.toLowerCase() &&
