@@ -1,5 +1,5 @@
 // Enumeração que representa as categorias dos itens da lista de compras
-enum Categoria {
+enum Categoria { // enum: um conjunto de valores nomeados
   Frutas,
   Vegetais,
   Carnes,
